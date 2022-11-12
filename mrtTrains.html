@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>MRT Train Stations</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 580px;
+			width: 1270px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+
+	
+</head>
+<body>
+	<div class="container-fluid">
+		<div id='map'></div>
+	</div>
+
+
+<script src="TrainStation.js" type="text/javascript"></script>
+
+<script>
+	const map = L.map('map').setView([1.35, 103.80], 12);
+
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+	function onEachFeature(feature, layer) {
+		let popupContent = `<p>${feature.properties.STN_NAME + " (" + feature.properties.STN_NO + ")"}</p>`;
+
+		if (feature.properties && feature.properties.popupContent) {
+			popupContent += feature.properties.popupContent;
+		}
+
+		layer.bindPopup(popupContent);
+	}
+
+	var markerIcon = L.Icon.extend({
+		options: {
+			iconSize:     [30, 30],
+			iconAnchor:   [12, 23],
+			popupAnchor:  [4, -1]
+		}
+	});
+
+	var greenIcon = new markerIcon({iconUrl: 'marker-green.png'}),
+		redIcon = new markerIcon({iconUrl: 'marker-red.png'}),
+		orangeIcon = new markerIcon({iconUrl: 'marker-orange.png'}),
+		blueIcon = new markerIcon({iconUrl: 'marker-blue.png'}),
+		purpleIcon = new markerIcon({iconUrl: 'marker-purple.png'}),
+		brownIcon = new markerIcon({iconUrl: 'marker-brown.png'}),
+
+		grIcon = new markerIcon({iconUrl: 'marker-green-red.png'}),
+		gpIcon = new markerIcon({iconUrl: 'marker-green-purple.png'}),
+		goIcon = new markerIcon({iconUrl: 'marker-green-orange.png'}),
+		gbIcon = new markerIcon({iconUrl: 'marker-green-blue.png'}),
+		rbnIcon = new markerIcon({iconUrl: 'marker-red-brown.png'}),
+		roIcon = new markerIcon({iconUrl: 'marker-red-orange.png'}),
+		rbIcon = new markerIcon({iconUrl: 'marker-red-blue.png'}),
+		opIcon = new markerIcon({iconUrl: 'marker-orange-purple.png'}),		
+		obIcon = new markerIcon({iconUrl: 'marker-orange-blue.png'}),	
+		obnIcon = new markerIcon({iconUrl: 'marker-orange-brown.png'}),	
+		pbIcon = new markerIcon({iconUrl: 'marker-purple-blue.png'}),	
+
+		dhobyghautIcon = new markerIcon({iconUrl: 'marker-dhobyghaut.png'}),
+		marinabayIcon = new markerIcon({iconUrl: 'marker-marinabay.png'}),
+		lrtIcon = new markerIcon({iconUrl: 'marker-lrt.png'});
+
+
+	const trainStationLayer = L.geoJSON(trainStations, {
+
+		style(feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature,
+
+		pointToLayer(feature, latlng) {
+			var stnName = feature.properties.STN_NAME
+			var stnNo = feature.properties.STN_NO
+
+			if (stnNo.indexOf("/") === -1) {
+				// green
+				if (stnNo.startsWith("EW") || stnNo.startsWith("CG")) {
+					return 	L.marker(latlng, {
+							icon: greenIcon
+					})
+				}
+
+				// red
+				if (stnNo.startsWith("NS")) {
+					return 	L.marker(latlng, {
+							icon: redIcon
+					})
+				}
+
+				// orange 
+				if (stnNo.startsWith("CC")) {
+					return 	L.marker(latlng, {
+							icon: orangeIcon
+					})
+				}
+
+				// blue 
+				if (stnNo.startsWith("DT")) {
+					return 	L.marker(latlng, {
+							icon: blueIcon
+					})
+				}
+
+				// purple 
+				if (stnNo.startsWith("NE")) {
+					return 	L.marker(latlng, {
+							icon: purpleIcon
+					})
+				}
+
+				// brown 
+				if (stnNo.startsWith("TE")) {
+					return 	L.marker(latlng, {
+							icon: brownIcon
+					})
+				}
+
+				// lrt
+				if (stnName.match("LRT")) {
+					return 	L.marker(latlng, {
+							icon: lrtIcon
+					})
+				}
+			}
+
+			// 2 or more mrt lines
+			else {
+				// dhoby ghaut mrt
+				if (stnName.match("DHOBY GHAUT")) {
+					return 	L.marker(latlng, {
+							icon: dhobyghautIcon
+				})
+				}
+				// marina bay mrt
+				else if (stnName.match("MARINA BAY")) {
+					return L.marker(latlng, {
+							icon: marinabayIcon
+				})
+				}
+				// green and red 
+				if (stnNo.match("EW") && stnNo.match("NS")) {
+					return 	L.marker(latlng, {
+							icon: grIcon
+					})
+				}
+
+				// green and purple 
+				if (stnNo.match("EW") && stnNo.match("NE")) {
+					return 	L.marker(latlng, {
+							icon: gpIcon
+					})
+				}
+
+				// green and orange 
+				if (stnNo.match("EW") && stnNo.match("CC")) {
+					return 	L.marker(latlng, {
+							icon: goIcon
+					})
+				}
+
+				// green and blue 
+				if ( (stnNo.match("EW") && stnNo.match("DT")) || (stnNo.match("CG") && stnNo.match("DT")) ) {
+					return 	L.marker(latlng, {
+							icon: gbIcon
+					})
+				}
+
+				// red and brown 
+				if (stnNo.match("NS") && stnNo.match("TE")) {
+					return 	L.marker(latlng, {
+							icon: rbnIcon
+					})
+				}
+
+				// red and orange 
+				if (stnNo.match("NS") && stnNo.match("CC")) {
+					return 	L.marker(latlng, {
+							icon: roIcon
+					})
+				}
+
+				// red and blue
+				if (stnNo.match("NS") && stnNo.match("DT")) {
+					return 	L.marker(latlng, {
+							icon: rbIcon
+					})
+				}
+
+				// orange and purple 
+				if (stnNo.match("CC") && stnNo.match("NE")) {
+					return 	L.marker(latlng, {
+							icon: opIcon
+					})
+				}			
+
+				// orange and blue 
+				if ( (stnNo.match("CC") && stnNo.match("DT")) || (stnNo.match("CE") && stnNo.match("DT")) ) {
+					return 	L.marker(latlng, {
+							icon: obIcon
+					})
+				}	
+
+				// orange and brown 
+				if (stnNo.match("CC") && stnNo.match("TE")) {
+					return 	L.marker(latlng, {
+							icon: obnIcon
+					})
+				}
+				
+				// purple and blue
+				if (stnNo.match("NE") && stnNo.match("DT")) {
+					return 	L.marker(latlng, {
+							icon: pbIcon
+					})
+				}
+			}
+		}
+	}).addTo(map);
+
+</script>
+
+
+
+</body>
+</html>

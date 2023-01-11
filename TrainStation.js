@@ -109,7 +109,7 @@ var trainStations =
 {"type":"Feature","geometry":{"type":"Point","coordinates":[103.63962756181238,1.3299818235881533,0]},"properties":{"STN_NAME":"TUAS WEST ROAD MRT STATION","STN_NO":"EW32"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[103.81615888843221,1.322401507237944,0]},"properties":{"STN_NAME":"BOTANIC GARDENS MRT STATION","STN_NO":"CC19/DT9"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[103.8526085041432,1.2929332374692004,0]},"properties":{"STN_NAME":"CITY HALL MRT STATION","STN_NO":"EW13/NS25"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[103.83914018144303,1.281412282654493,0]},"properties":{"STN_NAME":"OUTRAM PARK MRT STATION","STN_NO":"EW16/NE3"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.83914018144303,1.281412282654493,0]},"properties":{"STN_NAME":"OUTRAM PARK MRT STATION","STN_NO":"EW16/NE3/TE17"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[103.84814352687101,1.3508383853898307,0]},"properties":{"STN_NAME":"BISHAN MRT STATION","STN_NO":"NS17/CC15"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[103.96154622937273,1.334549361030716,0]},"properties":{"STN_NAME":"EXPO MRT STATION","STN_NO":"CG1/DT35"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[103.87627965663359,1.3919441926130998,0]},"properties":{"STN_NAME":"FERNVALE LRT STATION","STN_NO":"SW5"}},
@@ -168,5 +168,17 @@ var trainStations =
 {"type":"Feature","geometry":{"type":"Point","coordinates":[103.94654794350295,1.3272540815765557,0]},"properties":{"STN_NAME":"TANAH MERAH MRT STATION","STN_NO":"EW4"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[103.8073308653134,1.3258706039812675,0]},"properties":{"STN_NAME":"TAN KAH KEE MRT STATION","STN_NO":"DT8"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[103.83292375588513,1.3544050504962823,0]},"properties":{"STN_NAME":"UPPER THOMSON MRT STATION","STN_NO":"TE8"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[103.83679077026878,1.372103173214586,0]},"properties":{"STN_NAME":"MAYFLOWER MRT STATION","STN_NO":"TE6"}}
-]}
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.83679077026878,1.372103173214586,0]},"properties":{"STN_NAME":"MAYFLOWER MRT STATION","STN_NO":"TE6"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.83514512581047,1.3288221699613154,0]},"properties":{"STN_NAME":"MOUNT PLEASANT STATION","STN_NO":"TE10"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.82564595280004,1.3190566669229433,0]},"properties":{"STN_NAME":"STEVENS STATION","STN_NO":"TE11"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.81964293451063,1.3059990826226315,0]},"properties":{"STN_NAME":"NAPIER STATION","STN_NO":"TE12"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.8241468057633, 1.3033955370657384,0]},"properties":{"STN_NAME":"Orchard Boulevard MRT Station","STN_NO":"TE13"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.83124995280009,1.3034840590458456,0]},"properties":{"STN_NAME":"Orchard MRT Station","STN_NO":"TE14"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.8332676883545,1.2950044072300018,0]},"properties":{"STN_NAME":"Great World MRT Station","STN_NO":"TE15"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.8332310008689,1.2902826131866092,0]},"properties":{"STN_NAME":"Havelock MRT Station","STN_NO":"TE16"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.84416199882094,1.2810108837260448,0]},"properties":{"STN_NAME":"Maxwell MRT Station","STN_NO":"TE18"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.85072431231575,1.2779951317698028,0]},"properties":{"STN_NAME":"Shenton Way MRT Station","STN_NO":"TE19"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.85449212581052,1.2754249702838976,0]},"properties":{"STN_NAME":"Marina Bay MRT Station","STN_NO":"TE20"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.86292469213163,1.2743718128650756,0]},"properties":{"STN_NAME":"Marina South MRT Station","STN_NO":"TE21"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[103.86792285280015,1.2799968838540665,0]},"properties":{"STN_NAME":"Gardens By The Bay MRT Station","STN_NO":"TE22"}}
+]};
